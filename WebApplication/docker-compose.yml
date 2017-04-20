@@ -1,0 +1,21 @@
+version: '2'
+services:
+  web:
+    build: .
+    environment:
+        - "ASPNETCORE_URLS=http://+:5000"
+    ports:
+     - "8000:5000"
+
+  db:
+    image: "datagrip/mssql-server-linux"
+    environment:
+        - 'ACCEPT_EULA=Y'
+        - 'SA_PASSWORD=Trifork(!)Spar'
+        - 'MSSQL_DB=sampledb'
+        - 'MSSQL_USER=sampledbuser'
+        - 'MSSQL_PASSWORD=TriforkSecret'
+    ports:
+         - "1433:1433"
+
+

@@ -186,6 +186,7 @@ namespace WebApplication.Data.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName");
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

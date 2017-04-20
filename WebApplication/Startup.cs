@@ -41,7 +41,7 @@ namespace WebApplication
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -83,6 +83,13 @@ namespace WebApplication
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            // Create DB on startup
+
+            using (var context = app.ApplicationServices.GetService<ApplicationDbContext>())
+            {
+                context.Database.Migrate();
+            }
+
         }
     }
 }
