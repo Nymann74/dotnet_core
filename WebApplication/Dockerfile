@@ -1,6 +1,6 @@
 FROM microsoft/dotnet
 
-
+RUN echo 'GO'
 RUN apt-get -qq update && apt-get -qqy --no-install-recommends install \
     git \
     unzip
